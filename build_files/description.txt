@@ -1,0 +1,1 @@
+advanced_subject attempts to cut out having to explicitly write the subject of your example group when trying to call methods or add arguments to methods. It works by reading the conventional description syntax to determine what the subject is. Then allowing you to explicitly state what variables will be passed in as arguments.
