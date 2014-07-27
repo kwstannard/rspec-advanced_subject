@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.description = File.read("#{build_dir}/description.txt")
   s.authors     = `git log --format="%aN"`.split(/\n/)
   s.email       = 'kwstannard@gmail.com'
-  s.files       = Dir["lib/*.rb"]
-  s.test_files  = Dir["spec/*_spec.rb"]
+  s.files       = Dir["lib/**/*.rb"]
+  s.test_files  = Dir["spec/**/*_spec.rb"]
   s.license     = 'MIT'
 
   s.add_dependency 'rspec', '~>3.0'
