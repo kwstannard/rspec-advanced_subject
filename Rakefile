@@ -9,7 +9,6 @@ task "push" => ['build:readme'] do
 end
 
 namespace :build do
-  build_dir = 'build_files'
   sizes = ['small', 'medium', 'large']
 
   sizes.each do |size|
@@ -33,10 +32,6 @@ namespace :build do
     File.write("README.md", <<-README)
 #rspec-advanced_subject-#{read_version}
 #{File.read("#{build_dir}/description.txt")}
-##example specs
-```ruby
-#{File.read("spec/advanced_subject_spec.rb")}
-```
     README
     sh "git add README.md"
   end
@@ -71,8 +66,12 @@ namespace :build do
     File.write("#{build_dir}/version.txt", version.join('.'))
     sh "git add build_files/version.txt"
   end
-end
 
-def read_version
-  File.read("#{build_dir}/version.txt").strip
+  def build_dir
+    'build_files'
+  end
+
+  def read_version
+    File.read("#{build_dir}/version.txt").strip
+  end
 end
