@@ -20,12 +20,18 @@ namespace :build do
   end
 
   desc "builds gem"
-  task "build" => ['readme', 'date'] do
-    sh "gem build rspec-advanced_subject.gemspec"
-    sh "git commit --amend --no-edit"
-    sh "git tag -a v#{read_version} -m 'version #{read_version}'"
+  task "build" => ['readme', 'date', 'build_gem', 'tag'] do
   end
 
+  task 'build_gem' do
+    sh "gem build rspec-advanced_subject.gemspec"
+    sh "git commit --amend --no-edit"
+  end
+
+  task "tag" do
+    sh "git tag -a v#{read_version} -m 'version #{read_version}'"
+    sh "git push 'v#{read_version}'"
+  end
 
   desc "builds the readme file"
   task 'readme' do
