@@ -15,8 +15,11 @@ module RSpec::AdvancedSubject::InstanceMethodExampleGroup
     set_subject_method_name(base.metadata)
 
     base.subject do
-      raise NotImplementedError if metadata[:with_args].nil?
-      callee
+      if metadata[:with_args].nil?
+        super()
+      else
+        callee
+      end
     end
   end
 

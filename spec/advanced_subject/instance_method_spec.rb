@@ -26,8 +26,8 @@ describe InstanceMock do
     end
 
     context "when using default subject without passing arguments" do
-      it "raises NotImplementedError" do
-        expect{subject.single_argument(5)}.to raise_error(NotImplementedError)
+      it "returns the default rspec subject" do
+        expect(subject.single_argument(5)).to eq(5)
       end
     end
   end
