@@ -29,12 +29,8 @@ module RSpec::AdvancedSubject::ClassMethodExampleGroup
   end
 
   def self.set_subject_method_name(metadata)
-    case d = metadata[:example_group][:description_args].first
-    when is_a?(Class)
-      metadata[:subject_method_name] = d
-    when class_regex
-      metadata[:subject_method_name] = d.gsub class_regex, ""
-    end
+    d = metadata[:description_args].first
+    metadata[:subject_method_name] = d.gsub class_regex, ""
   end
 
   def self.class_regex

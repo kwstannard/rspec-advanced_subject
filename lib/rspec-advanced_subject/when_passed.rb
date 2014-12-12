@@ -8,6 +8,7 @@ class RSpec::Core::ExampleGroup
   end
 
   define_example_group_method :describe, advanced_subject: true
+  define_example_group_method :calling, advanced_subject: true, with_args: []
 end
 
 module RSpec::AdvancedSubject::Core

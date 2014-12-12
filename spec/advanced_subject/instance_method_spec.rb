@@ -11,7 +11,7 @@ class InstanceMock
 end
 
 describe InstanceMock do
-  describe "#single_argument" do
+  describe "#single_argument", "derp" do
     when_passed 5 do
       it { is_expected.to eq(5) }
     end
@@ -32,7 +32,7 @@ describe InstanceMock do
     end
   end
 
-  describe "#multiple_arguments" do
+  shared_examples "for #multiple_arguments" do
     when_passed do
       it { is_expected.to eq([]) }
     end
@@ -49,5 +49,14 @@ describe InstanceMock do
       subject { described_class.new.multiple_arguments(5) }
       it { is_expected.to eq([5]) }
     end
+  end
+
+  describe "#multiple_arguments" do
+    include_examples "for #multiple_arguments"
+  end
+
+  calling "#multiple_arguments" do
+    it { is_expected.to eq([]) }
+    include_examples "for #multiple_arguments"
   end
 end
